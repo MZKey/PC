@@ -1,19 +1,35 @@
 from numpy import random as rn
 
 
-def calc136k(arr):
+def calc136l(arr):
     """
-    Заполнение массива случайными числами или вручную
+    Решение 136 задачи
 
     Параметры:
     arr -- массив
 
     """
-    res = 0.0
-    for i in range(len(arr)):
-        res += arr[i]
-    return (res ** 2) * 2
+    res = arr[0]
+    for i in range(1, len(arr)):
+        res *= arr[i]
 
+    res = abs(res)
+    return res ** .5
+
+def calc178e(arr):
+    """
+    Решение 136 задачи
+
+    Параметры:
+    arr -- массив
+
+    """
+    res = 0
+    for i in range(len(arr)):
+        if i%2==0 and arr[i]%2!=0:
+            res += 1
+
+    return res
 
 def init_array(arr):
     """

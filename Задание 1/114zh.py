@@ -6,4 +6,4 @@ res = 3/2
 for i in range(3,n+1):
     res *= (i+1)/(i+2)
 
-print(res)
+print(f"Произведение: {res:.5f}")
