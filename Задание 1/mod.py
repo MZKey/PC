@@ -15,34 +15,12 @@ def calc677(n):
     for i in range(n):
         for j in range(n):
             summ = 0
-            summ += a[0:i, 0:j].sum()  # вверхний левый
-            summ += a[0:i, j + 1:n].sum()  # вверхний правый
-            summ += a[i + 1:n, 0:j].sum()  # нижний левый
+            summ += a[0:i, 0:j].sum()          # вверхний левый
+            summ += a[0:i, j + 1:n].sum()      # вверхний правый
+            summ += a[i + 1:n, 0:j].sum()      # нижний левый
             summ += a[i + 1:n, j + 1:n].sum()  # нижний правый
-            # b[i][j] = a + b+ c+d
             b[i][j] = summ
-    return (b)
-
-
-def lab8(n):
-    """
-    Получение матрицы элемент, к-ой равен сумме элементов данной матрицы
-    расположенных в области, как на рисунке
-    :param n:
-    :return:
-    """
-    a = np.ones((n, n), dtype=int)
-    print(a)
-    b = np.zeros((n, n), dtype=int)
-
-    for i in range(n):
-        for j in range(n):
-            summ = 0
-            summ = a[0:i + 1, j:n + 1].sum()  # ИСПОЛЬЗОВАТЬ [,]
-            # print(a[0:i + 1, j:n + 1])
-            # summ = a[n - i - 1:n][n - j - 1:n].sum()
-            b[i][j] = summ
-    return (b)
+    return b
 
 
 def calc335(n):
