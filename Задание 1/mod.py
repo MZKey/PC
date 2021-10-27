@@ -2,22 +2,39 @@ from numpy import random as rn
 import numpy as np
 
 
+def calc6772(m, n):
+    """
+    Решение 677 задачи, вариант 2
+
+    :param m: матрица
+    :param n: размерность матрицы
+    """
+
+    allSumm = m.sum()
+    b = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            summ = allSumm - m[i, 0:n].sum() - m[0:n, j].sum() + m[i][j]
+            b[i][j] = summ
+    return b
+
+
 def calc677(n):
     """
     Решение 677 задачи
 
     :param n: размерность матрицы
     """
-    a = np.ones((n, n), dtype=int)
+    a = np.ones((n, n))
     print(a)
-    b = np.zeros((n, n), dtype=int)
+    b = np.zeros((n, n))
 
     for i in range(n):
         for j in range(n):
             summ = 0
-            summ += a[0:i, 0:j].sum()          # вверхний левый
-            summ += a[0:i, j + 1:n].sum()      # вверхний правый
-            summ += a[i + 1:n, 0:j].sum()      # нижний левый
+            summ += a[0:i, 0:j].sum()  # вверхний левый
+            summ += a[0:i, j + 1:n].sum()  # вверхний правый
+            summ += a[i + 1:n, 0:j].sum()  # нижний левый
             summ += a[i + 1:n, j + 1:n].sum()  # нижний правый
             b[i][j] = summ
     return b
@@ -25,20 +42,17 @@ def calc677(n):
 
 def calc335(n):
     """
-    Решение 136 задачи
+    Решение 335 задачи
 
     Параметры:
     n -- количество итераций
 
     """
     s = 0
+    c = 1
     for k in range(1, n + 1):
-        c = 1
-        for j in range(0, k + 1):
-            c = c * (k + j)
-
+        c = c * (k + n)
         s += c
-        print(f"k = {k:3}   res = {s}")
 
     return s
 
@@ -75,6 +89,33 @@ def calc178e(arr):
     return res
 
 
+def input_array(arr):
+    """
+    Заполнение массива вручную
+
+    Параметры:
+    arr -- массив
+    """
+
+    for i in range(len(arr)):
+        arr[i] = float(input("a[{}] = ".format(i + 1)))
+
+    return arr
+
+
+def random_array(arr):
+    """
+    Заполнение массива случайными числами
+
+    Параметры:
+    arr -- массив
+
+    """
+
+    arr = rn.randint(1, 10, len(arr))
+    return arr
+
+
 def init_array(arr):
     """
     Заполнение массива случайными числами или вручную
@@ -105,3 +146,20 @@ def init_array(arr):
         # arr = rn.random(len(arr),)
         print("\na =", arr)
         return arr
+
+
+def input_matr(a):
+    """
+    Заполнение матрицы вручную
+
+    Параметры:
+    a -- матрица
+
+    """
+
+    for i in range(len(a)):
+        j: int
+        for j in range(len(a[i])):
+            #print(f"a[{i}][{j}] = ")
+            a[i][j] = float(input(f"a[{i}][{j}] = "))
+    return a

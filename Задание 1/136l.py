@@ -2,7 +2,17 @@ import mod
 
 n = int(input("Введите n = "))
 a = [0] * n
-a = mod.init_array(a)
+
+print("\nЗаполнить массив случайными числами? Введите \"1\", если да или \"0\", если нет!")
+flag = int(input("flag = "))
+
+if flag == 1:
+    a = mod.random_array(a)
+elif flag == 0:
+    a = mod.input_array(a)
+else:
+    print("Вы ввели некорректное значение, было решено заполнить массив случайными числами")
+    a = mod.random_array(a)
 
 res = mod.calc136l(a)
 
