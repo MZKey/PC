@@ -26,6 +26,6 @@ I(t3)={P4, P5}                     O(t3)={P3, P4}
 3. 
  Матрица входных и выходных инциденций:  
 ![title](/images/in.png?raw=true "Optional Title")  
-![title](/Images/out.png?raw=true "Optional Title")  
+![title](/images/out.png?raw=true "Optional Title")  
  Матрица инцидентности:  
  ![title](/images/incind.png?raw=true "Optional Title")    
