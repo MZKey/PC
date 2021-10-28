@@ -22,10 +22,10 @@ I(t3)={P4, P5}                     O(t3)={P3, P4}
 ```  
 2.     
   ![title](/images/petri.png?raw=true "Optional Title")
-  
+
 3. 
  Матрица входных и выходных инциденций:  
 ![title](/images/in.png?raw=true "Optional Title")  
-![title](/Image/out.png?raw=true "Optional Title")  
+![title](/Images/out.png?raw=true "Optional Title")  
  Матрица инцидентности:  
  ![title](/images/incind.png?raw=true "Optional Title")    
