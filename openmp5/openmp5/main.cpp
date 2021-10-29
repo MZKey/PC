@@ -22,11 +22,19 @@ void inputArray(std::vector<int>& arr)
 
 void randomArray(std::vector<int>& arr)
 {
-	std::random_device rd;
-	std::mt19937 mersenne(rd());
+	srand(time(NULL));
 
-	for (auto& i: arr)
-		i = mersenne();
+	const int min = 1;
+	const int max = 10;
+
+	for (auto& i : arr)
+		i = min + rand() % (max - min + 1);
+
+	//std::random_device rd;
+	//std::mt19937 mersenne(rd());
+
+	//for (auto& i : arr)
+	//	i = mersenne();
 }
 
 void printArray(std::vector<int>& arr)
@@ -35,27 +43,45 @@ void printArray(std::vector<int>& arr)
 		std::cout << "a[" << i << "] = " << arr[i] << std::endl;
 }
 
-long long processParallel(std::vector<int>& arr)
+double processParallel(std::vector<int>& arr)
 {
+	double sum = 1;
+	#pragma omp parallel for reduction(*:sum)
+	for (int i = 0; i < arr.size(); i++) {
+		sum *= arr[i] + 1;
+	}
+	return sum;
+
+	/*
 	int res = 1;
-	#pragma omp parallel for reduction(*:res)
+	#pragma omp parallel for reduction(*:res) shared(arr)
 	for (int i = 0; i < arr.size(); i++)
-		res *= arr[i];
+		res *= arr[i] + sin(arr[i]); // cos(sin(arr[i]));
 
 	return res;
+	*/
 }
 
-long long process(std::vector<int>& arr)
+double process(std::vector<int>& arr)
 {
+	double sum = 1;
+	for (unsigned i = 0; i < arr.size(); i++) {
+		sum *= arr[i] + 1;
+	}
+	return sum;
+
+	/*
 	int res = 1;
 	for (unsigned i = 0; i < arr.size(); i++)
-		res *= arr[i];
+		res *= arr[i] + sin(arr[i]); // cos(sin(arr[i]));
 
 	return res;
+	*/
 }
 
 int main()
 {
+	omp_set_num_threads(6);
 	std::vector<int> arr;
 	int array_size = 0;
 	std::cout << "max threads: " << omp_get_max_threads() << std::endl;
