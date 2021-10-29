@@ -30,7 +30,10 @@ void threadFunction(int i, double d, const std::string &s)
 {
      std::cout << i << ", " << d << ", " << s << std::endl;
 }
- 
+
+
+# Источники
+- https://habr.com/ru/post/182610/
 int main()
 {
      std::thread thr(threadFunction, 1, 2.34, "example"); // Все пераметры передаются по значению, даже если функция принимает ссылку
